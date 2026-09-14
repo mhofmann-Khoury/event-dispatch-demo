@@ -1,0 +1,11 @@
+.gallery-item {
+  text-align: center;
+  padding: 8px;
+  border-radius: 8px;
+  border: 3px solid transparent;
+}
+
+.gallery-item.captured {
+  border-color: #b7791f;
+  background: #fffbea;
+}

@@ -1,0 +1,20 @@
+.cat-image {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.cat-image.petted {
+  border: 10px solid #eff311;
+}
+
+.cat-image.disabled {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  pointer-events: none;
+}

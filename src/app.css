@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  background: #ffffff;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  font-family: system-ui, sans-serif;
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-controls {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.event-log-heading {
+  margin-top: 32px;
+}
+
+.event-log {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  min-height: 220px;
+  white-space: pre-wrap;
+}
