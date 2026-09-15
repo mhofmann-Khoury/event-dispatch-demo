@@ -17,15 +17,11 @@ export function DisableButton({ label, onLog, onDisable }: DisableButtonProps) {
     <button
       className="disable-button"
       onClick={(event: React.MouseEvent) => {
-        onLog(
-          `       TARGET is Disabled Button for "${label}" -> Disable the Element and Stop Header Update`
-        );
+        onLog( `       TARGET is "${label}"'s Button-> Disable "${label}" and stop bubbling`);
         onDisable();
-        event.stopPropagation();
+        event.stopPropagation()
       }}
-    >
-      Disable
-    </button>
+    > Disable </button>
   );
 }
 
@@ -35,12 +31,10 @@ export function EnableButton({ label, onLog, onEnable }: EnableButtonProps) {
       className="disable-button"
       onClick={() => {
         onLog(
-          `       TARGET is Enable Button for "${label}" -> Enable the Element`
+          `       TARGET is "${label}"'s Button-> Enable the Element`
         );
         onEnable();
       }}
-    >
-      Enable
-    </button>
+    > Enable </button>
   );
 }

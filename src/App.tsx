@@ -14,8 +14,6 @@ export function App() {
 
   return (
     <div className="app">
-      <h1>Capture → Target → Bubble: Gallery Demo</h1>
-
       <Gallery onLog={addLog} clearLog={clearLog} />
 
       <h3 className="event-log-heading">Event log For Latest Click</h3>

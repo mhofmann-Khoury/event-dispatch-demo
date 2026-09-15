@@ -1,58 +1,34 @@
 import { CatImage } from './CatImage';
 import { DisableButton, EnableButton } from './DisableButton';
 import './GalleryItem.css';
+import { use, useRef, useState } from 'react';
 
 export interface GalleryItemProps {
   src: string;
   label: string;
-  petted: boolean;
-  disabled: boolean;
-  captured: boolean;
   onLog: (entry: string) => void;
-  onPet: () => void;
-  onDisable: () => void;
-  onEnable: () => void;
-  onCaptureItemClicked: () => void;
+  onCatClicked: () => void;
 }
 
-export function GalleryItem({
-  src,
-  label,
-  petted,
-  disabled,
-  captured,
-  onLog,
-  onPet,
-  onDisable,
-  onEnable,
-  onCaptureItemClicked,
-}: GalleryItemProps) {
-  const button = disabled ? (
-    <EnableButton label={label} onLog={onLog} onEnable={onEnable} />
-  ) : (
-    <DisableButton label={label} onLog={onLog} onDisable={onDisable} />
-  );
+export function GalleryItem({ src, label, onLog, onCatClicked}: GalleryItemProps) {
+
+  const [isDisabled, setIsDisabled] = useState<bool>(false);
+
+  const disableButton = <DisableButton label={label} onLog={onLog} onDisable={() => { setIsDisabled(true); }} /> ;
+  const enableButton = <EnableButton label={label} onLog={onLog} onEnable={() => { setIsDisabled(false); }} /> ;
+
   return (
     <div
-      className={`gallery-item ${captured ? 'captured' : ''} ${
-        disabled ? 'disabled' : ''
-      }`}
-      onClickCapture={() => {
-        onLog(
-          `   Captured by Gallery Item ("${label}") -> Update State with which item was clicked`
-        );
-        onCaptureItemClicked();
+      className="gallery-item"
+      onClick={() => {
+        if(!isDisabled){
+          onLog( `   Bubbled back to Gallery Item ("${label}") -> Update Gallery State`);
+          onCatClicked();
+      }
       }}
     >
-      <CatImage
-        src={src}
-        label={label}
-        petted={petted}
-        disabled={disabled}
-        onLog={onLog}
-        onPet={onPet}
-      />
-      {button}
+      <CatImage src={src} label={label} disabled={isDisabled} onLog={onLog} />
+      {isDisabled ? enableButton : disableButton}
     </div>
   );
 }

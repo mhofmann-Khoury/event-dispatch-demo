@@ -1,23 +1,23 @@
 import "./CatImage.css";
+import { use, useRef, useState } from 'react';
 
 export interface CatImageProps {
   src: string;
   label: string;
-  petted: boolean;
   disabled: boolean;
   onLog: (entry: string) => void;
-  onPet: () => void;
 }
 
-export function CatImage({ src, label, petted, disabled, onLog, onPet }: CatImageProps) {
+export function CatImage({ src, label, disabled, onLog }: CatImageProps) {
+  const [isPet, setIsPet] = useState<bool>(false);
   return (
     <img
       src={src}
       alt={label}
-      className={`cat-image ${petted ? "petted" : ""} ${disabled ? "disabled" : ""}`}
+      className={`cat-image ${isPet ? "petted" : ""} ${disabled ? "disabled" : ""}`}
       onClick={() => {
         onLog(`       TARGET Image "${label}" clicked -> petted`);
-        onPet();
+        setIsPet(true);
       }}
     />
   );
